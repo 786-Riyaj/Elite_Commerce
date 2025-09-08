@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EliteCommerce - E-commerce Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- Header -->
+        <header>
+            <div class="logo">EliteCommerce</div>
+            <nav>
+                <button id="homeBtn" type="button">Home</button>
+                <button id="listBtn" type="button">Shop</button>
+                <button id="cartBtn" type="button" class="relative">
+                    Cart <span id="cartCount" class="hidden">0</span>
+                </button>
+                <button id="loginBtn" type="button">Login/Signup</button>
+                <button id="logoutBtn" type="button" class="hidden">Logout</button>
+            </nav>
+        </header>
+
+
+
+
+        <!-- Home Page -->
+        <section id="homePage"
+            class="relative min-h-screen flex flex-col justify-center items-center text-center text-white"
+            style="background: url('images/back.avif') no-repeat center center/cover;">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div class="relative max-w-4xl px-6">
+                <h1 class="text-6xl font-extrabold mb-6 drop-shadow-lg">Shop Smarter, Live Better</h1>
+                <p class="text-xl mb-8 drop-shadow-md">Discover exclusive collections, personalized filters, and a
+                    seamless shopping experience with persistent cart and secure login.</p>
+                <button id="startShoppingBtn"
+                    class="btn bg-indigo-600 hover:bg-indigo-700 px-10 py-4 text-2xl font-bold rounded-full shadow-lg transition duration-300">Start
+                    Shopping</button>
+            </div>
+        </section>
+
+
+
+
+        <!-- Listing Page -->
+        <section id="listPage" class="hidden p-8">
+            <h2 class="text-4xl font-bold mb-8">Product Catalog</h2>
+            <div class="flex flex-col lg:flex-row">
+
+                <!-- Filters Sidebar -->
+                <aside class="w-full lg:w-1/4 filter-sidebar mb-6 lg:mb-0">
+                    <h3 class="text-2xl font-semibold mb-6">Refine Search</h3>
+                    <div class="filter-group">
+                        <label for="priceFilter">Min Price: $0 to Max Price</label>
+                        <input type="range" id="priceFilter" min="0" max="1000" value="0" class="w-full" />
+                        <span id="priceValue">$0</span>
+                    </div>
+                    <div class="filter-group">
+                        <label for="categoryFilter">Category</label>
+                        <select id="categoryFilter" class="w-full p-3 border rounded">
+                            <option>All</option>
+                            <option>Electronics</option>
+                            <option>Clothing</option>
+                            <option>Home</option>
+                        </select>
+                    </div>
+                    <button id="applyFiltersBtn" class="apply-filters-btn">Apply Filters</button>
+                </aside>
+
+                <!-- Products Grid -->
+                <main class="w-full lg:w-3/4 lg:ml-8">
+                    <div id="productsGrid" class="product-grid"></div>
+                </main>
+
+            </div>
+        </section>
+
+
+        <!-- Cart Page -->
+        <section id="cartPage" class="hidden p-8">
+            <h2 class="text-4xl font-bold mb-8">Shopping Cart</h2>
+            <div id="cartItems" class="mb-8"></div>
+            <div id="cartTotal" class="text-right text-3xl font-bold mt-8 border-t pt-4"></div>
+            <button id="checkoutBtn" class="btn px-12 py-4 text-xl w-full mt-8">Proceed to Checkout</button>
+        </section>
+
+
+        <!-- Login/Signup Modal -->
+
+        <div id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+            <div class="modal-content">
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active" novalidate>
+                    <h3 id="authTitle">Login</h3>
+                    <input id="loginEmail" type="email" placeholder="Email" aria-label="Email" required />
+                    <input id="loginPassword" type="password" placeholder="Password" aria-label="Password" required />
+                    <button type="submit">Login</button>
+                    <div class="switch-link" id="switchToSignup">Don't have an account? Signup</div>
+                </form>
+
+                <!-- Signup Form -->
+                <form id="signupForm" class="auth-form" novalidate>
+                    <h3 id="authTitle">Signup</h3>
+
+                    <input id="signupName" type="text" placeholder="Full Name" aria-label="Full Name" required />
+                    <input id="signupEmail" type="email" placeholder="Email" aria-label="Email" required />
+                    <input id="signupPassword" type="password" placeholder="Password" aria-label="Password" required />
+                    <input id="signupConfirmPassword" type="password" placeholder="Confirm Password"
+                        aria-label="Confirm Password" required />
+
+                    <button type="submit">Signup</button>
+                    <div class="switch-link" id="switchToLogin">Already have an account? Login</div>
+                </form>
+
+                <button id="closeModal" class="close-modal" aria-label="Close modal">×</button>
+            </div>
+        </div>
+
+
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-gray-300 py-12 mt-auto">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-indigo-400">EliteCommerce</h3>
+                    <p>Your trusted partner for premium products and effortless shopping.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-indigo-400 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Support</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Terms & Privacy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-indigo-400 transition">Electronics</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Apparel</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Home & Garden</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Beauty</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact</h3>
+                    <p>Email: support@elitecommerce.com</p>
+                    <p>Phone: +91 (123) 123-4567</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" aria-label="Facebook" class="hover:text-indigo-400 transition">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M22 12a10 10 0 10-11.5 9.9v-7h-2v-3h2v-2c0-2 1-3 3-3h2v3h-2c-.5 0-1 .5-1 1v2h3l-1 3h-2v7A10 10 0 0022 12z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="hover:text-indigo-400 transition">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M23 3a10.9 10.9 0 01-3.14.86 4.48 4.48 0 001.98-2.48 9.14 9.14 0 01-2.88 1.1 4.52 4.52 0 00-7.7 4.12A12.8 12.8 0 013 4.15a4.52 4.52 0 001.4 6.04 4.48 4.48 0 01-2.05-.57v.06a4.52 4.52 0 003.63 4.43 4.52 4.52 0 01-2.04.08 4.52 4.52 0 004.22 3.14A9 9 0 013 19.54a12.8 12.8 0 006.92 2" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="hover:text-indigo-400 transition">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a1 1 0 110 2 1 1 0 010-2zm-5 2a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8 text-gray-500 text-sm">&copy; 2024 EliteCommerce. All rights reserved.</div>
+        </footer>
+
+        <script src="js/app.js"></script>
+</body>
+
+</html>
